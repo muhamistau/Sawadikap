@@ -4,4 +4,12 @@
     <string name="home">Home</string>
     <string name="wardrobe">Wardrobe</string>
     <string name="history">History</string>
+    <string name="intro_title_1">Siapa Sawadikap?</string>
+    <string name="intro_desc_1">Sawadikap adalah platform sedekah pakaian pertama di Indonesia yang dapat memudahkan pengguna untuk berbagi dengan siapapun, dimanapun, dan kapanpun</string>
+    <string name="intro_title_2">Mengapa Sawadikap?</string>
+    <string name="intro_desc_2">Kami percaya berbagi dengan sesama adalah kegiatan positif</string>
+    <string name="intro_title_3">Pelajari Sawadikap</string>
+    <string name="intro_desc_3">Jadi bagian dari kami, unggah pakaianmu, pilih berbagi kemudian tunggu kurir menjemput pakaianmu dan sedekahmu selesai</string>
+    <string name="intro_title_4">Mulailah berbagi</string>
+    <string name="intro_desc_4">Tunggu apalagi, ayo mulai berbagi</string>
 </resources>
