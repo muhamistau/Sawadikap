@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.sawadikap.sawadikap.ui.main.home.HomeFragment"
-        android:label="Home"
+        android:label="Beranda"
         tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_homeFragment_to_testFragment"
@@ -17,12 +17,12 @@
     <fragment
         android:id="@+id/wardrobeFragment"
         android:name="com.sawadikap.sawadikap.ui.main.wardobe.WardrobeFragment"
-        android:label="Wardrobe"
+        android:label="Lemari"
         tools:layout="@layout/fragment_wardrobe" />
     <fragment
         android:id="@+id/historyFragment"
         android:name="com.sawadikap.sawadikap.ui.main.history.HistoryFragment"
-        android:label="History"
+        android:label="Riwayat"
         tools:layout="@layout/fragment_history" />
     <fragment
         android:id="@+id/testFragment"

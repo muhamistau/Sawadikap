@@ -59,7 +59,7 @@
                     android:foreground="?selectableItemBackground"
                     android:paddingTop="16dp"
                     android:paddingBottom="16dp"
-                    android:src="@drawable/ic_home"
+                    android:src="@drawable/ic_trophy"
                     android:tint="@android:color/white" />
 
                 <ImageView
@@ -73,35 +73,7 @@
                     android:foreground="?selectableItemBackground"
                     android:paddingTop="16dp"
                     android:paddingBottom="16dp"
-                    android:src="@drawable/ic_home"
-                    android:tint="@android:color/white" />
-
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginEnd="16dp"
-                    android:layout_weight="1"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:foreground="?selectableItemBackground"
-                    android:paddingTop="16dp"
-                    android:paddingBottom="16dp"
-                    android:src="@drawable/ic_home"
-                    android:tint="@android:color/white" />
-
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginEnd="16dp"
-                    android:layout_weight="1"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:foreground="?selectableItemBackground"
-                    android:paddingTop="16dp"
-                    android:paddingBottom="16dp"
-                    android:src="@drawable/ic_home"
+                    android:src="@drawable/ic_shield"
                     android:tint="@android:color/white" />
 
             </LinearLayout>
@@ -160,7 +132,7 @@
                     android:layout_marginEnd="8dp"
                     android:paddingTop="16dp"
                     android:paddingBottom="16dp"
-                    android:src="@drawable/ic_home"
+                    android:src="@drawable/ic_hanger"
                     android:tint="@android:color/white" />
 
                 <TextView
