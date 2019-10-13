@@ -7,7 +7,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
-import androidx.viewpager.widget.ViewPager
 import com.sawadikap.sawadikap.R
 import com.sawadikap.sawadikap.ui.authentication.AuthActivity
 import kotlinx.android.synthetic.main.activity_intro.*
@@ -15,7 +14,6 @@ import kotlinx.android.synthetic.main.activity_intro.*
 class IntroActivity : AppCompatActivity() {
 
     private val NUM_PAGES = 6
-    private lateinit var mPager: ViewPager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
