@@ -13,4 +13,7 @@
     <string name="intro_title_4">Mulailah berbagi</string>
     <string name="intro_desc_4">Tunggu apalagi, ayo mulai berbagi</string>
 
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>
