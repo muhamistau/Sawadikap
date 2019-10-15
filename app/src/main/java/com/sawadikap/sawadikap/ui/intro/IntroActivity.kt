@@ -13,7 +13,7 @@ import kotlinx.android.synthetic.main.activity_intro.*
 
 class IntroActivity : AppCompatActivity() {
 
-    private val NUM_PAGES = 6
+    private val NUM_PAGES = 3
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,7 +21,7 @@ class IntroActivity : AppCompatActivity() {
         setupViewPager()
 
         introButton.setOnClickListener {
-            if (introViewPager.currentItem in 0..4) introViewPager.currentItem++
+            if (introViewPager.currentItem in 0..1) introViewPager.currentItem++
             else endTutorial()
         }
     }
@@ -47,10 +47,7 @@ class IntroActivity : AppCompatActivity() {
             when (position) {
                 0 -> tp = IntroFragment.newInstance(R.layout.fragment_intro_page_1, position)
                 1 -> tp = IntroFragment.newInstance(R.layout.fragment_intro_page_2, position)
-                2 -> tp = IntroFragment.newInstance(R.layout.fragment_intro_page_1, position)
-                3 -> tp = IntroFragment.newInstance(R.layout.fragment_intro_page_1, position)
-                4 -> tp = IntroFragment.newInstance(R.layout.fragment_intro_page_1, position)
-                5 -> tp = IntroFragment.newInstance(R.layout.fragment_intro_page_1, position)
+                2 -> tp = IntroFragment.newInstance(R.layout.fragment_intro_page_3, position)
             }
             return tp!!
         }
