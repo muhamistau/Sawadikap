@@ -6,15 +6,10 @@
     android:orientation="vertical"
     tools:context=".ui.main.wardobe.WardrobeFragment">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?actionBarSize"
-        android:elevation="8dp" />
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/clothesRecycler"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_marginBottom="?actionBarSize" />
 
 </LinearLayout>

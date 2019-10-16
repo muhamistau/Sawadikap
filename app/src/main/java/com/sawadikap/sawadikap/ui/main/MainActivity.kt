@@ -1,5 +1,6 @@
 package com.sawadikap.sawadikap.ui.main
 
+import android.graphics.Color
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
@@ -15,6 +16,10 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        setSupportActionBar(mainToolbar)
+        mainToolbar.setBackgroundColor(Color.TRANSPARENT)
+        mainToolbar.setTitleTextColor(Color.BLACK)
 
         // Setup Bottom Navigation with navController
         navController = Navigation.findNavController(this, R.id.homeNavHostFragment)
