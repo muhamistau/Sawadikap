@@ -50,9 +50,7 @@ class WardrobeFragment : Fragment() {
 
         clothesRecycler.adapter = clothesListAdapter
         clothesRecycler.layoutManager = GridLayoutManager(activity, 2)
-        clothesRecycler.addItemDecoration(
-            MarginItemDecoration(8)
-        )
+        clothesRecycler.addItemDecoration(MarginItemDecoration())
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
