@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
 import com.sawadikap.sawadikap.R
-import com.sawadikap.sawadikap.ui.main.MainActivity
+import com.sawadikap.sawadikap.ui.authentication.AuthActivity
 import kotlinx.android.synthetic.main.activity_intro.*
 
 class IntroActivity : AppCompatActivity() {
@@ -36,7 +36,7 @@ class IntroActivity : AppCompatActivity() {
     }
 
     private fun endTutorial() {
-        startActivity(Intent(this, MainActivity::class.java))
+        startActivity(Intent(this, AuthActivity::class.java))
         finish()
     }
 
