@@ -59,4 +59,7 @@ dependencies {
 
     // Shopping Cart Library
     implementation 'com.carteasy.v1.lib:carteasy:0.0.5'
+
+    // Custom EditText
+    implementation 'com.libizo:customedittext:1.0.6'
 }
