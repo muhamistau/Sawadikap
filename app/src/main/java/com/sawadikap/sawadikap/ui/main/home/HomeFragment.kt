@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.sawadikap.sawadikap.R
 import kotlinx.android.synthetic.main.fragment_home.*
 
@@ -28,8 +28,8 @@ class HomeFragment : Fragment(), View.OnClickListener {
     override fun onClick(view: View?) {
         when (view?.id) {
             R.id.button1 -> {
-                val action = HomeFragmentDirections.actionHomeFragmentToTestFragment()
-                view.findNavController().navigate(action)
+                val action = HomeFragmentDirections.actionHomeFragmentToTrophyFragment()
+                findNavController().navigate(action)
             }
         }
     }

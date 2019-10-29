@@ -1,4 +1,4 @@
-package com.sawadikap.sawadikap.ui.main.wardobe
+package com.sawadikap.sawadikap.ui.main.wardrobe
 
 import android.content.Context
 import android.view.LayoutInflater

@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.main.history.HistoryFragment">
+    tools:context=".ui.trophy.TrophyFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -16,7 +16,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="8dp"
-            android:text="Berlangsung"
+            android:text="Selesai"
             android:textSize="24dp" />
 
         <androidx.recyclerview.widget.RecyclerView
@@ -24,7 +24,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:itemCount="2"
-            tools:listitem="@layout/item_history" />
+            tools:listitem="@layout/item_trophy" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -32,7 +32,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="8dp"
-            android:text="Selesai"
+            android:text="Belum Selesai"
             android:textSize="24dp" />
 
         <androidx.recyclerview.widget.RecyclerView
@@ -40,7 +40,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:itemCount="5"
-            tools:listitem="@layout/item_history" />
+            tools:listitem="@layout/item_trophy" />
 
     </LinearLayout>
 

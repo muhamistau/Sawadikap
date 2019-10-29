@@ -4,12 +4,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.main.wardobe.WardrobeFragment">
+    tools:context=".ui.main.wardrobe.WardrobeFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/clothesRecycler"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="?actionBarSize" />
+        android:layout_marginBottom="?actionBarSize"
+        tools:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        tools:listitem="@layout/item_clothes"
+        tools:spanCount="2" />
 
 </LinearLayout>

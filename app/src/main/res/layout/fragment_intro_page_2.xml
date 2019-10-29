@@ -19,10 +19,8 @@
         android:id="@+id/imageView"
         android:layout_width="240dp"
         android:layout_height="241dp"
-        android:layout_marginTop="91dp"
-        android:layout_marginBottom="93dp"
+        android:layout_marginTop="120dp"
         android:src="@drawable/ic_intro_celebration"
-        app:layout_constraintBottom_toTopOf="@+id/textView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textView" />
@@ -31,11 +29,11 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="205dp"
+        android:layout_marginTop="80dp"
         android:text="Kami percaya berbagi dengan sesama adalah\nkegiatan positif yang seharusnya dapat dilakukan\ndengan mudah"
         android:textAlignment="center"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

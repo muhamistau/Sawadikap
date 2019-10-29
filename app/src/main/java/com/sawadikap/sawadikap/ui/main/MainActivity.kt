@@ -2,9 +2,11 @@ package com.sawadikap.sawadikap.ui.main
 
 import android.graphics.Color
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
+import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import com.sawadikap.sawadikap.R
 import kotlinx.android.synthetic.main.activity_main.*
@@ -12,6 +14,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : AppCompatActivity() {
 
     private lateinit var navController: NavController
+    private lateinit var appBarConfiguration: AppBarConfiguration
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,6 +27,14 @@ class MainActivity : AppCompatActivity() {
         // Setup Bottom Navigation with navController
         navController = Navigation.findNavController(this, R.id.homeNavHostFragment)
         bottomNav.setupWithNavController(navController)
+
+        // Setup AppBar with navigationController
+        appBarConfiguration = AppBarConfiguration(
+            setOf(
+                R.id.homeFragment, R.id.wardrobeFragment, R.id.historyFragment
+            )
+        )
+        mainToolbar.setupWithNavController(navController, appBarConfiguration)
 
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
@@ -38,10 +49,11 @@ class MainActivity : AppCompatActivity() {
     private fun hideBottomNavigation() {
         // bottom_navigation is BottomNavigationView
         with(bottomNav) {
-            if (visibility == android.view.View.VISIBLE && alpha == 1f) {
+            if (visibility == View.VISIBLE && alpha == 1f) {
+                addFab.hide()
                 animate()
                     .alpha(0f)
-                    .withEndAction { visibility = android.view.View.GONE }
+                    .withEndAction { visibility = View.GONE }
                     .duration = 0
             }
         }
@@ -50,7 +62,8 @@ class MainActivity : AppCompatActivity() {
     private fun showBottomNavigation() {
         // bottom_navigation is BottomNavigationView
         with(bottomNav) {
-            visibility = android.view.View.VISIBLE
+            addFab.show()
+            visibility = View.VISIBLE
             animate()
                 .alpha(1f)
                 .duration = 0

@@ -11,22 +11,31 @@
         android:label="Beranda"
         tools:layout="@layout/fragment_home">
         <action
-            android:id="@+id/action_homeFragment_to_testFragment"
-            app:destination="@id/testFragment" />
+            android:id="@+id/action_homeFragment_to_trophyFragment"
+            app:destination="@id/trophyFragment" />
     </fragment>
     <fragment
         android:id="@+id/wardrobeFragment"
-        android:name="com.sawadikap.sawadikap.ui.main.wardobe.WardrobeFragment"
+        android:name="com.sawadikap.sawadikap.ui.main.wardrobe.WardrobeFragment"
         android:label="Lemari"
-        tools:layout="@layout/fragment_wardrobe" />
+        tools:layout="@layout/fragment_wardrobe">
+        <action
+            android:id="@+id/action_wardrobeFragment_to_boxFragment"
+            app:destination="@id/boxFragment" />
+    </fragment>
     <fragment
         android:id="@+id/historyFragment"
         android:name="com.sawadikap.sawadikap.ui.main.history.HistoryFragment"
         android:label="Riwayat"
         tools:layout="@layout/fragment_history" />
     <fragment
-        android:id="@+id/testFragment"
-        android:name="com.sawadikap.sawadikap.ui.main.TestFragment"
-        android:label="fragment_test"
-        tools:layout="@layout/fragment_test" />
+        android:id="@+id/trophyFragment"
+        android:name="com.sawadikap.sawadikap.ui.trophy.TrophyFragment"
+        android:label="Piala"
+        tools:layout="@layout/fragment_trophy" />
+    <fragment
+        android:id="@+id/boxFragment"
+        android:name="com.sawadikap.sawadikap.ui.main.wardrobe.BoxFragment"
+        android:label="Kotak Sedekah"
+        tools:layout="@layout/fragment_box" />
 </navigation>

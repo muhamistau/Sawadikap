@@ -1,11 +1,11 @@
-package com.sawadikap.sawadikap.ui.main.wardobe
+package com.sawadikap.sawadikap.ui.main.wardrobe
 
 
 import android.content.Context
 import android.os.Bundle
 import android.view.*
-import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.sawadikap.sawadikap.R
 import com.sawadikap.sawadikap.util.MarginItemDecoration
@@ -59,7 +59,12 @@ class WardrobeFragment : Fragment() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        Toast.makeText(activity, "Box Clicked", Toast.LENGTH_SHORT).show()
+        when (item.itemId) {
+            R.id.box -> {
+                val action = WardrobeFragmentDirections.actionWardrobeFragmentToBoxFragment()
+                findNavController().navigate(action)
+            }
+        }
         return super.onOptionsItemSelected(item)
     }
 }

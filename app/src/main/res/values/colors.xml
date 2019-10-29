@@ -5,4 +5,7 @@
     <color name="colorAccent">#FAFAFA</color>
     <color name="colorAccentDark">#C7C7C7</color>
     <color name="white">#FFFFFF</color>
+    <color name="historyRed">#F44336</color>
+    <color name="historyYellow">#FFEB3B</color>
+    <color name="historyGreen">@color/colorPrimary</color>
 </resources>
