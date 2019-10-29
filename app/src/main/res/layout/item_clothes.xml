@@ -8,9 +8,9 @@
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_margin="4dp"
         android:clickable="true"
         android:focusable="true"
-        android:layout_margin="4dp"
         android:foreground="?selectableItemBackground"
         app:cardCornerRadius="16dp">
 
@@ -24,6 +24,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="3"
+                android:scaleType="centerCrop"
                 android:src="@color/colorPrimary" />
 
             <RelativeLayout

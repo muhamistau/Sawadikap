@@ -45,51 +45,55 @@
                     android:text="@string/app_name"
                     android:textSize="24sp" />
 
-                <com.google.android.material.textfield.TextInputLayout
+                <com.libizo.CustomEditText
+                    android:id="@+id/emailEditText"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
                     android:layout_marginEnd="16dp"
-                    android:layout_marginBottom="16dp">
+                    android:layout_marginBottom="16dp"
+                    android:hint="Alamat Email"
+                    android:inputType="textEmailAddress"
+                    app:libIZO_setBorderView="true"
+                    app:libIZO_setCornerRadius="16dp"
+                    app:libIZO_setStrokeWidth="1dp" />
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
+                <com.libizo.CustomEditText
+                    android:id="@+id/passwordEditText"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
                     android:layout_marginEnd="16dp"
-                    android:layout_marginBottom="32dp">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
-
-                </com.google.android.material.textfield.TextInputLayout>
+                    android:layout_marginBottom="32dp"
+                    android:hint="Kata Sandi"
+                    android:inputType="textPassword"
+                    app:libIZO_setBorderView="true"
+                    app:libIZO_setCornerRadius="16dp"
+                    app:libIZO_setStrokeWidth="1dp" />
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/loginButton"
                     android:layout_width="match_parent"
-                    android:layout_height="72dp"
+                    android:layout_height="64dp"
                     android:layout_marginStart="16dp"
                     android:layout_marginEnd="16dp"
                     android:backgroundTint="@color/colorPrimary"
                     android:text="Masuk"
-                    app:cornerRadius="8dp" />
+                    android:textAllCaps="false"
+                    app:cornerRadius="16dp" />
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/signupButton"
                     style="@style/Widget.MaterialComponents.Button.TextButton"
                     android:layout_width="match_parent"
-                    android:layout_height="72dp"
+                    android:layout_height="64dp"
                     android:layout_marginStart="16dp"
                     android:layout_marginEnd="16dp"
                     android:layout_marginBottom="32dp"
                     android:text="Daftar"
+                    android:textAllCaps="false"
                     android:textColor="@color/colorPrimary" />
 
             </LinearLayout>
