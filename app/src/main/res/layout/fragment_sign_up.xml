@@ -77,20 +77,10 @@
                     android:layout_height="72dp"
                     android:layout_marginStart="16dp"
                     android:layout_marginEnd="16dp"
-                    android:backgroundTint="@color/colorPrimary"
-                    android:text="Masuk"
-                    app:cornerRadius="8dp" />
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/signupButton"
-                    style="@style/Widget.MaterialComponents.Button.TextButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="72dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginEnd="16dp"
                     android:layout_marginBottom="32dp"
+                    android:backgroundTint="@color/colorPrimary"
                     android:text="Daftar"
-                    android:textColor="@color/colorPrimary" />
+                    app:cornerRadius="8dp" />
 
             </LinearLayout>
 
