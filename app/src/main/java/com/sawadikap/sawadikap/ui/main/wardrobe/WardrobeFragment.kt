@@ -51,7 +51,7 @@ class WardrobeFragment : Fragment() {
 
     private fun retrieveData() {
         val sawadikapService = SawadikapRemote.create()
-        sawadikapService.getUserClothes(1).enqueue(object : Callback<List<Cloth>> {
+        sawadikapService.getUserClothes(26).enqueue(object : Callback<List<Cloth>> {
             override fun onFailure(call: Call<List<Cloth>>, t: Throwable) {
                 Log.d("FAILURE", t.message.toString())
             }
