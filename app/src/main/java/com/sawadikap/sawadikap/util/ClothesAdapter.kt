@@ -1,7 +1,6 @@
-package com.sawadikap.sawadikap.ui.main.wardrobe
+package com.sawadikap.sawadikap.util
 
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -30,7 +29,7 @@ class ClothesAdapter(
         return clothes.size
     }
 
-    override fun onBindViewHolder(holder: ClothesAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val currentCloth = clothes[position]
 
         Glide.with(context).clear(holder.image)
@@ -41,18 +40,12 @@ class ClothesAdapter(
         holder.bind(currentCloth, listener)
     }
 
-    fun setList(newClothes: List<Cloth>) {
-        clothes.addAll(newClothes)
-        Log.d("SetList", "Success")
-        notifyDataSetChanged()
-    }
-
     inner class ViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
         val image: ImageView = view.clothImage
         val name: TextView = view.clothName
         val status: TextView = view.clothStatus
 
-        fun bind(cloth: Cloth, listener: (Cloth) -> Unit) {
+        fun bind(cloth: Cloth, listener: (Cloth) -> (Unit)) {
             view.setOnClickListener { listener(cloth) }
         }
     }

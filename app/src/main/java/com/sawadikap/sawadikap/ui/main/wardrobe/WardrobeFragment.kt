@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.sawadikap.sawadikap.R
 import com.sawadikap.sawadikap.data.entity.Cloth
 import com.sawadikap.sawadikap.data.remote.SawadikapRemote
+import com.sawadikap.sawadikap.util.ClothesAdapter
 import com.sawadikap.sawadikap.util.MarginItemDecoration
 import kotlinx.android.synthetic.main.fragment_wardrobe.*
 import retrofit2.Call
@@ -37,16 +38,18 @@ class WardrobeFragment : Fragment() {
 
         clothes = ArrayList()
 
+        setupRecyclerView()
+        retrieveData()
+    }
+
+    private fun setupRecyclerView() {
         clothesAdapter = ClothesAdapter(activity as Context, clothes) {
-            //            val directions = ListFragmentDirections
-//                .actionListFragmentToDetailFragment(it)
-//            findNavController().navigate(directions)
+            Toast.makeText(context, it.type, Toast.LENGTH_SHORT).show()
         }
 
         clothesRecycler.adapter = clothesAdapter
         clothesRecycler.layoutManager = GridLayoutManager(activity, 2)
         clothesRecycler.addItemDecoration(MarginItemDecoration())
-        retrieveData()
     }
 
     private fun retrieveData() {
@@ -62,7 +65,7 @@ class WardrobeFragment : Fragment() {
                 if (data != null) {
                     Log.d("COBA", data.toString())
                     clothes.addAll(data)
-                    clothesAdapter.setList(clothes)
+                    clothesAdapter.notifyDataSetChanged()
                 }
             }
 

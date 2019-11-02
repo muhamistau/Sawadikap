@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,116 +7,134 @@
     tools:context=".ui.authentication.signup.SignUpFragment">
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="300dp"
-        android:background="@drawable/bg_rounded_background_primary" />
+        android:background="@drawable/bg_rounded_background_primary"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:layout_width="104dp"
-        android:layout_height="104dp"
-        android:layout_alignTop="@id/card"
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/card"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp"
-        android:src="@mipmap/ic_launcher" />
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="48dp"
+        android:text="Daftar"
+        android:textColor="@color/white"
+        android:textSize="48sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/linearLayout" />
 
-    <LinearLayout
+    <com.google.android.material.card.MaterialCardView
         android:id="@+id/card"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:orientation="vertical">
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:cardCornerRadius="16dp"
-            app:cardElevation="8dp">
+        <LinearLayout
+            android:layout_width="330dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-            <LinearLayout
-                android:layout_width="330dp"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginBottom="8dp"
+                android:text="Email"
+                android:textColor="@color/colorPrimary" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="32dp"
-                    android:text="Daftar"
-                    android:textSize="24sp" />
+            <com.libizo.CustomEditText
+                android:id="@+id/emailEditText"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/edit_background"
+                android:inputType="textEmailAddress" />
 
-                <com.libizo.CustomEditText
-                    android:id="@+id/emailEditText"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginBottom="16dp"
-                    android:hint="Alamat Email"
-                    android:inputType="textEmailAddress"
-                    app:libIZO_setBorderView="true"
-                    app:libIZO_setCornerRadius="16dp"
-                    app:libIZO_setStrokeWidth="1dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginBottom="8dp"
+                android:text="Nama Lengkap"
+                android:textColor="@color/colorPrimary" />
 
-                <com.libizo.CustomEditText
-                    android:id="@+id/fullNameEditText"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginBottom="16dp"
-                    android:hint="Nama Lengkap"
-                    android:inputType="textPersonName"
-                    app:libIZO_setBorderView="true"
-                    app:libIZO_setCornerRadius="16dp"
-                    app:libIZO_setStrokeWidth="1dp" />
+            <com.libizo.CustomEditText
+                android:id="@+id/fullNameEditText"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/edit_background"
+                android:inputType="textPersonName" />
 
-                <com.libizo.CustomEditText
-                    android:id="@+id/passwordEditText"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginBottom="16dp"
-                    android:hint="Kata Sandi"
-                    android:inputType="textPassword"
-                    app:libIZO_setBorderView="true"
-                    app:libIZO_setCornerRadius="16dp"
-                    app:libIZO_setStrokeWidth="1dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginBottom="8dp"
+                android:text="Kata Sandi"
+                android:textColor="@color/colorPrimary" />
 
-                <com.libizo.CustomEditText
-                    android:id="@+id/passwordConfirmationEditText"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginBottom="32dp"
-                    android:hint="Konfirmasi Kata Sandi"
-                    android:inputType="textPassword"
-                    app:libIZO_setBorderView="true"
-                    app:libIZO_setCornerRadius="16dp"
-                    app:libIZO_setStrokeWidth="1dp" />
+            <com.libizo.CustomEditText
+                android:id="@+id/passwordEditText"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/edit_background"
+                android:inputType="textPassword" />
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/signUpButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="64dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginBottom="32dp"
-                    android:backgroundTint="@color/colorPrimary"
-                    android:text="Daftar"
-                    android:textAllCaps="false"
-                    app:cornerRadius="16dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginBottom="8dp"
+                android:text="Email"
+                android:textColor="@color/colorPrimary" />
 
-            </LinearLayout>
+            <com.libizo.CustomEditText
+                android:id="@+id/passwordConfirmationEditText"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="32dp"
+                android:background="@drawable/edit_background"
+                android:inputType="textPassword" />
 
-        </com.google.android.material.card.MaterialCardView>
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/signUpButton"
+                android:layout_width="match_parent"
+                android:layout_height="64dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="32dp"
+                android:backgroundTint="@color/colorPrimary"
+                android:text="Daftar"
+                android:textAllCaps="false"
+                app:cornerRadius="16dp" />
 
-    </LinearLayout>
+        </LinearLayout>
 
-</RelativeLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

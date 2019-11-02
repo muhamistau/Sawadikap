@@ -22,6 +22,9 @@
         <action
             android:id="@+id/action_wardrobeFragment_to_boxFragment"
             app:destination="@id/boxFragment" />
+        <action
+            android:id="@+id/action_wardrobeFragment_to_wardrobeDetailFragment"
+            app:destination="@id/wardrobeDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/historyFragment"
@@ -38,4 +41,9 @@
         android:name="com.sawadikap.sawadikap.ui.main.wardrobe.BoxFragment"
         android:label="Kotak Sedekah"
         tools:layout="@layout/fragment_box" />
+    <fragment
+        android:id="@+id/wardrobeDetailFragment"
+        android:name="com.sawadikap.sawadikap.ui.main.wardrobe.WardrobeDetailFragment"
+        android:label="fragment_wardrobe_detail"
+        tools:layout="@layout/fragment_wardrobe_detail" />
 </navigation>
