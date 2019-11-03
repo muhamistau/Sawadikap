@@ -44,7 +44,9 @@ class WardrobeFragment : Fragment() {
 
     private fun setupRecyclerView() {
         clothesAdapter = ClothesAdapter(activity as Context, clothes) {
-            Toast.makeText(context, it.type, Toast.LENGTH_SHORT).show()
+            val direction =
+                WardrobeFragmentDirections.actionWardrobeFragmentToWardrobeDetailFragment(it)
+            findNavController().navigate(direction)
         }
 
         clothesRecycler.adapter = clothesAdapter

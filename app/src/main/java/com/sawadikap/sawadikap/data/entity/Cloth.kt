@@ -1,7 +1,10 @@
 package com.sawadikap.sawadikap.data.entity
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class Cloth(
     @SerializedName("id_pakaian")
     val id: Int,
@@ -19,4 +22,4 @@ data class Cloth(
     val photo: String,
     @SerializedName("status")
     val status: String
-)
+) : Parcelable

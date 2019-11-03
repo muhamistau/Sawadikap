@@ -44,6 +44,10 @@
     <fragment
         android:id="@+id/wardrobeDetailFragment"
         android:name="com.sawadikap.sawadikap.ui.main.wardrobe.WardrobeDetailFragment"
-        android:label="fragment_wardrobe_detail"
-        tools:layout="@layout/fragment_wardrobe_detail" />
+        android:label="Detail Pakaian"
+        tools:layout="@layout/fragment_wardrobe_detail">
+        <argument
+            android:name="cloth"
+            app:argType="com.sawadikap.sawadikap.data.entity.Cloth" />
+    </fragment>
 </navigation>

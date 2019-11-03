@@ -9,4 +9,5 @@
     <color name="historyYellow">#FFEB3B</color>
     <color name="historyGreen">@color/colorPrimary</color>
     <color name="grey">#DBDBDB</color>
+    <color name="textCategory">#9C9C9C</color>
 </resources>
