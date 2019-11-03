@@ -23,6 +23,7 @@
             android:id="@+id/trophyDone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:overScrollMode="never"
             tools:itemCount="2"
             tools:listitem="@layout/item_trophy" />
 
@@ -39,6 +40,7 @@
             android:id="@+id/trophyToDo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:overScrollMode="never"
             tools:itemCount="5"
             tools:listitem="@layout/item_trophy" />
 
