@@ -54,7 +54,7 @@ class MainActivity : AppCompatActivity() {
                 animate()
                     .alpha(0f)
                     .withEndAction { visibility = View.GONE }
-                    .duration = 0
+                    .duration = 100
             }
         }
     }
@@ -66,7 +66,7 @@ class MainActivity : AppCompatActivity() {
             visibility = View.VISIBLE
             animate()
                 .alpha(1f)
-                .duration = 0
+                .duration = 300
         }
     }
 }
