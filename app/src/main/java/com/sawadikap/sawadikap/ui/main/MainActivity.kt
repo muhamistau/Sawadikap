@@ -11,7 +11,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.sawadikap.sawadikap.R
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     private lateinit var navController: NavController
     private lateinit var appBarConfiguration: AppBarConfiguration
@@ -36,13 +36,22 @@ class MainActivity : AppCompatActivity() {
         )
         mainToolbar.setupWithNavController(navController, appBarConfiguration)
 
-
         navController.addOnDestinationChangedListener { _, destination, _ ->
             if (destination.id == R.id.homeFragment ||
                 destination.id == R.id.wardrobeFragment ||
                 destination.id == R.id.historyFragment
             ) showBottomNavigation()
             else hideBottomNavigation()
+        }
+
+        addFab.setOnClickListener(this)
+    }
+
+    override fun onClick(view: View?) {
+        when (view?.id) {
+            R.id.addFab -> {
+                navController.navigate(R.id.addClothFragment)
+            }
         }
     }
 

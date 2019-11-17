@@ -67,4 +67,9 @@
         android:name="com.sawadikap.sawadikap.ui.account.edit.AccountEditFragment"
         android:label="Ubah Rincian Akun"
         tools:layout="@layout/fragment_account_edit" />
+    <fragment
+        android:id="@+id/addClothFragment"
+        android:name="com.sawadikap.sawadikap.ui.main.AddClothFragment"
+        android:label="Tambah Pakaian"
+        tools:layout="@layout/fragment_add_cloth" />
 </navigation>
