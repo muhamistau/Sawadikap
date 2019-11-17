@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_homeFragment_to_trophyFragment"
             app:destination="@id/trophyFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_accountDetailFragment"
+            app:destination="@id/accountDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/wardrobeFragment"
@@ -50,4 +53,18 @@
             android:name="cloth"
             app:argType="com.sawadikap.sawadikap.data.entity.Cloth" />
     </fragment>
+    <fragment
+        android:id="@+id/accountDetailFragment"
+        android:name="com.sawadikap.sawadikap.ui.account.detail.AccountDetailFragment"
+        android:label="Akun"
+        tools:layout="@layout/fragment_account_detail">
+        <action
+            android:id="@+id/action_accountDetailFragment_to_accountEditFragment"
+            app:destination="@id/accountEditFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/accountEditFragment"
+        android:name="com.sawadikap.sawadikap.ui.account.edit.AccountEditFragment"
+        android:label="Ubah Rincian Akun"
+        tools:layout="@layout/fragment_account_edit" />
 </navigation>

@@ -42,6 +42,21 @@ class WardrobeFragment : Fragment() {
         retrieveData()
     }
 
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.menu_wardrobe, menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.box -> {
+                val action = WardrobeFragmentDirections.actionWardrobeFragmentToBoxFragment()
+                findNavController().navigate(action)
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
     private fun setupRecyclerView() {
         clothesAdapter = ClothesAdapter(activity as Context, clothes) {
             val direction =
@@ -72,20 +87,5 @@ class WardrobeFragment : Fragment() {
             }
 
         })
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.wardrobe_menu, menu)
-        super.onCreateOptionsMenu(menu, inflater)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.box -> {
-                val action = WardrobeFragmentDirections.actionWardrobeFragmentToBoxFragment()
-                findNavController().navigate(action)
-            }
-        }
-        return super.onOptionsItemSelected(item)
     }
 }

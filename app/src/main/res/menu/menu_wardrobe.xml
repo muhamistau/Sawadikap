@@ -4,6 +4,6 @@
     <item
         android:id="@+id/box"
         android:icon="@drawable/ic_box"
-        android:title="Box"
+        android:title="Kotak"
         app:showAsAction="always" />
 </menu>

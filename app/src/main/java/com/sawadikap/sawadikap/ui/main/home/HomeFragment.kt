@@ -28,7 +28,8 @@ class HomeFragment : Fragment(), View.OnClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        button1.setOnClickListener(this)
+        trophy.setOnClickListener(this)
+        account.setOnClickListener(this)
         retrieveData()
     }
 
@@ -50,8 +51,13 @@ class HomeFragment : Fragment(), View.OnClickListener {
 
     override fun onClick(view: View?) {
         when (view?.id) {
-            R.id.button1 -> {
+            R.id.trophy -> {
                 val action = HomeFragmentDirections.actionHomeFragmentToTrophyFragment()
+                findNavController().navigate(action)
+            }
+
+            R.id.account -> {
+                val action = HomeFragmentDirections.actionHomeFragmentToAccountDetailFragment()
                 findNavController().navigate(action)
             }
         }
