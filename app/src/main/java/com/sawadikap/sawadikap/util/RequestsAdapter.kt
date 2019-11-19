@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.sawadikap.sawadikap.R
@@ -13,7 +14,8 @@ import kotlinx.android.synthetic.main.item_history.view.*
 
 class RequestsAdapter(
     private val context: Context,
-    private val requests: ArrayList<Request>
+    private val requests: ArrayList<Request>,
+    private val listener: (Request) -> Unit
 ) : RecyclerView.Adapter<RequestsAdapter.ViewHolder>() {
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -27,12 +29,25 @@ class RequestsAdapter(
         return requests.size
     }
 
-    override fun onBindViewHolder(holder: RequestsAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val currentRequest = requests[position]
+
+        if (currentRequest.status.contains("sedekah")) {
+            holder.invoiceIcon.setImageResource(R.drawable.ic_check)
+            holder.invoiceIcon.setBackgroundColor(context.resources.getColor(R.color.historyGreen))
+        } else if (currentRequest.status.contains("proses")) {
+            holder.invoiceIcon.setImageResource(R.drawable.ic_arrow_forward)
+            holder.invoiceIcon.setBackgroundColor(context.resources.getColor(R.color.historyYellow))
+        } else {
+            holder.invoiceIcon.setImageResource(R.drawable.ic_close)
+            holder.invoiceIcon.setBackgroundColor(context.resources.getColor(R.color.historyRed))
+        }
 
         holder.invoiceId.text = "#${currentRequest.id}"
         holder.invoiceDate.text = currentRequest.time
         holder.invoiceStatus.text = currentRequest.status
+
+        holder.bind(currentRequest, listener)
     }
 
     fun setList(newTrophies: List<Request>) {
@@ -42,10 +57,15 @@ class RequestsAdapter(
         notifyDataSetChanged()
     }
 
-    inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    inner class ViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
+        val invoiceIcon: ImageView = view.historyImage
         val invoiceId: TextView = view.invoiceId
         val invoiceDate: TextView = view.invoiceDate
         val invoiceStatus: TextView = view.invoiceStatus
+
+        fun bind(request: Request, listener: (Request) -> (Unit)) {
+            view.setOnClickListener { listener(request) }
+        }
     }
 
 }

@@ -36,7 +36,9 @@ class HistoryFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         requests = ArrayList()
-        requestsAdapter = RequestsAdapter(activity as Context, requests)
+        requestsAdapter = RequestsAdapter(activity as Context, requests) {
+            Toast.makeText(activity, "clicked", Toast.LENGTH_SHORT).show()
+        }
 
         historyDone.adapter = requestsAdapter
         historyDone.layoutManager = LinearLayoutManager(activity)
