@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="32dp"
+    tools:context=".ui.main.history.HistoryDetailFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:orientation="horizontal">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/imageBox"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginEnd="16dp"
+            app:cardCornerRadius="8dp">
+
+            <ImageView
+                android:id="@+id/historyImage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/historyYellow"
+                android:padding="16dp"
+                android:src="@drawable/ic_box"
+                android:tint="@color/white" />
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical|end"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="18/09/2019 15:00" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Telah disedekahkan"
+                android:textColor="@color/historyGreen"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        app:cardCornerRadius="8dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_marginBottom="16dp"
+                android:text="Rincian"
+                android:textColor="@color/colorPrimary" />
+
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/header"
+                android:layout_alignParentStart="true"
+                android:layout_marginBottom="16dp"
+                android:text="Nama"
+                android:textColor="@color/textCategory" />
+
+            <TextView
+                android:id="@+id/clothName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/header"
+                android:layout_alignParentEnd="true"
+                android:layout_marginBottom="16dp"
+                android:text="Dress Biru" />
+
+            <TextView
+                android:id="@+id/size"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/name"
+                android:layout_alignParentStart="true"
+                android:layout_marginBottom="16dp"
+                android:text="Ukuran"
+                android:textColor="@color/textCategory" />
+
+            <TextView
+                android:id="@+id/clothSize"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/clothName"
+                android:layout_alignParentEnd="true"
+                android:layout_marginBottom="16dp"
+                android:text="S" />
+
+            <TextView
+                android:id="@+id/gender"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/size"
+                android:layout_alignParentStart="true"
+                android:layout_marginBottom="16dp"
+                android:text="Gender"
+                android:textColor="@color/textCategory" />
+
+            <TextView
+                android:id="@+id/clothGender"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/clothSize"
+                android:layout_alignParentEnd="true"
+                android:layout_marginBottom="16dp"
+                android:text="Wanita" />
+
+            <TextView
+                android:id="@+id/age"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/gender"
+                android:layout_alignParentStart="true"
+                android:layout_marginBottom="16dp"
+                android:text="Kategori Usia"
+                android:textColor="@color/textCategory" />
+
+            <TextView
+                android:id="@+id/clothAge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/gender"
+                android:layout_alignParentEnd="true"
+                android:layout_marginBottom="16dp"
+                android:text="Dewasa" />
+
+            <TextView
+                android:id="@+id/type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/age"
+                android:layout_alignParentStart="true"
+                android:layout_marginBottom="16dp"
+                android:text="Jenis baju"
+                android:textColor="@color/textCategory" />
+
+            <TextView
+                android:id="@+id/clothType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/age"
+                android:layout_alignParentEnd="true"
+                android:layout_marginBottom="16dp"
+                android:text="Blouse" />
+
+            <TextView
+                android:id="@+id/condition"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/type"
+                android:layout_alignParentStart="true"
+                android:text="Kondisi"
+                android:textColor="@color/textCategory" />
+
+            <TextView
+                android:id="@+id/clothCondition"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/type"
+                android:layout_alignParentEnd="true"
+                android:text="Seperti Baru" />
+
+            <com.google.android.material.button.MaterialButton
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/clothCondition"
+                android:layout_marginTop="8dp"
+                android:text="Selengkapnya (x)"
+                android:textAllCaps="false"
+                android:textColor="@color/colorPrimary" />
+
+        </RelativeLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/clothDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:text="Penerima"
+            android:textColor="@color/textCategory" />
+
+        <TextView
+            android:id="@+id/clothStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:text="Panti Asuhan Cinta Anak" />
+
+    </RelativeLayout>
+
+</LinearLayout>

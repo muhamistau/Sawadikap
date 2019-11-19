@@ -20,9 +20,10 @@
             android:textSize="24dp" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/trophyDone"
+            android:id="@+id/historyDone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:overScrollMode="never"
             tools:itemCount="2"
             tools:listitem="@layout/item_history" />
 
@@ -36,9 +37,10 @@
             android:textSize="24dp" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/trophyToDo"
+            android:id="@+id/historyToDo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:overScrollMode="never"
             tools:itemCount="5"
             tools:listitem="@layout/item_history" />
 

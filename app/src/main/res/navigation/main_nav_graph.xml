@@ -33,7 +33,11 @@
         android:id="@+id/historyFragment"
         android:name="com.sawadikap.sawadikap.ui.main.history.HistoryFragment"
         android:label="Riwayat"
-        tools:layout="@layout/fragment_history" />
+        tools:layout="@layout/fragment_history">
+        <action
+            android:id="@+id/action_historyFragment_to_historyDetailFragment"
+            app:destination="@id/historyDetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/trophyFragment"
         android:name="com.sawadikap.sawadikap.ui.trophy.TrophyFragment"
@@ -72,4 +76,9 @@
         android:name="com.sawadikap.sawadikap.ui.main.AddClothFragment"
         android:label="Tambah Pakaian"
         tools:layout="@layout/fragment_add_cloth" />
+    <fragment
+        android:id="@+id/historyDetailFragment"
+        android:name="com.sawadikap.sawadikap.ui.main.history.HistoryDetailFragment"
+        android:label="Rincian Riwayat"
+        tools:layout="@layout/fragment_history_detail" />
 </navigation>

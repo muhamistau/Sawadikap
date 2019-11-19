@@ -47,7 +47,7 @@
                     android:id="@+id/invoiceId"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="#12345" />
+                    android:text="#" />
 
                 <TextView
                     android:id="@+id/invoiceDate"
@@ -58,6 +58,7 @@
             </LinearLayout>
 
             <TextView
+                android:id="@+id/invoiceStatus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"

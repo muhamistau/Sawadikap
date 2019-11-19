@@ -1,6 +1,7 @@
 package com.sawadikap.sawadikap.data.remote
 
 import com.sawadikap.sawadikap.data.entity.Cloth
+import com.sawadikap.sawadikap.data.entity.Request
 import com.sawadikap.sawadikap.data.entity.Trophy
 import com.sawadikap.sawadikap.domain.model.request.LoginRequest
 import com.sawadikap.sawadikap.domain.model.request.SignUpRequest
@@ -32,4 +33,7 @@ interface SawadikapService {
 
     @POST("piala")
     fun addToTrophyCabinet(@Body trophyRequest: TrophyRequest): Call<TrophyResponse>
+
+    @GET("request/{id}")
+    fun getUseRequest(@Path("id") id: Int): Call<List<Request>>
 }
