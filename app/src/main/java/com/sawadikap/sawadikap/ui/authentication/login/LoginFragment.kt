@@ -3,14 +3,22 @@ package com.sawadikap.sawadikap.ui.authentication.login
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.sawadikap.sawadikap.R
+import com.sawadikap.sawadikap.data.remote.SawadikapRemote
+import com.sawadikap.sawadikap.domain.model.request.LoginRequest
+import com.sawadikap.sawadikap.domain.model.response.LoginResponse
 import com.sawadikap.sawadikap.ui.main.MainActivity
 import kotlinx.android.synthetic.main.fragment_login.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class LoginFragment : Fragment(), View.OnClickListener {
     override fun onCreateView(
@@ -29,7 +37,10 @@ class LoginFragment : Fragment(), View.OnClickListener {
 
     override fun onClick(view: View?) {
         when (view?.id) {
-            R.id.loginButton -> checkLogin()
+            R.id.loginButton -> {
+//                checkLogin()
+                nextPage()
+            }
 
             R.id.signupButton -> {
                 findNavController().navigate(R.id.signUpFragment)
@@ -38,34 +49,39 @@ class LoginFragment : Fragment(), View.OnClickListener {
     }
 
     private fun checkLogin() {
-//        if (emailEditText.text.isNullOrEmpty() || passwordEditText.text.isNullOrEmpty()) {
-//            Toast.makeText(activity, "Isi", Toast.LENGTH_SHORT).show()
-//        } else {
-//            val sawadikapService = SawadikapRemote.create()
-//            val loginRequest = LoginRequest(
-//                emailEditText.text.toString(),
-//                passwordEditText.text.toString()
-//            )
-//
-//            sawadikapService.login(loginRequest).enqueue(object : Callback<LoginResponse> {
-//                override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
-//                    Toast.makeText(activity, "Login Gagal", Toast.LENGTH_SHORT).show()
-//                    Log.d("FAILURE", t.message.toString())
-//                }
-//
-//                override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
-//                    Log.d("LOGIN", response.body().toString())
-//                    if (response.body().toString() == "null") {
-//                        Toast.makeText(activity, "Email atau Kata sandi salah", Toast.LENGTH_SHORT)
-//                            .show()
-//                    } else {
-//                        startActivity(Intent(activity, MainActivity::class.java))
-//                        activity?.finish()
-//                    }
-//                }
-//            })
-//        }
+        if (emailEditText.text.isNullOrEmpty() || passwordEditText.text.isNullOrEmpty()) {
+            Toast.makeText(activity, "Isi", Toast.LENGTH_SHORT).show()
+        } else {
+            val sawadikapService = SawadikapRemote.create()
+            val loginRequest = LoginRequest(
+                emailEditText.text.toString(),
+                passwordEditText.text.toString()
+            )
 
+            sawadikapService.login(loginRequest).enqueue(object : Callback<LoginResponse> {
+                override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
+                    Toast.makeText(activity, "Login Gagal", Toast.LENGTH_SHORT).show()
+                    Log.d("FAILURE", t.message.toString())
+                }
+
+                override fun onResponse(
+                    call: Call<LoginResponse>,
+                    response: Response<LoginResponse>
+                ) {
+                    Log.d("LOGIN", response.body().toString())
+                    if (response.body().toString() == "null") {
+                        Toast.makeText(activity, "Email atau Kata sandi salah", Toast.LENGTH_SHORT)
+                            .show()
+                    } else {
+                        startActivity(Intent(activity, MainActivity::class.java))
+                        activity?.finish()
+                    }
+                }
+            })
+        }
+    }
+
+    private fun nextPage() {
         // For development purpose, comment these for testing
         startActivity(Intent(activity, MainActivity::class.java))
         activity?.finish()

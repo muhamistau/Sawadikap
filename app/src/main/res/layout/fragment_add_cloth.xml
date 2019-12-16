@@ -22,6 +22,7 @@
                 android:layout_height="match_parent">
 
                 <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardView"
                     android:layout_width="320dp"
                     android:layout_height="220dp"
                     android:layout_marginStart="16dp"
@@ -33,7 +34,14 @@
                     android:focusable="true"
                     app:cardCornerRadius="8dp">
 
+                    <ImageView
+                        android:id="@+id/cameraImage"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop" />
+
                     <LinearLayout
+                        android:id="@+id/button"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
@@ -41,6 +49,7 @@
                         android:orientation="horizontal">
 
                         <ImageView
+                            android:id="@+id/fromCamera"
                             android:layout_width="32dp"
                             android:layout_height="32dp"
                             android:layout_margin="8dp"
@@ -48,6 +57,7 @@
                             android:tint="@color/white" />
 
                         <ImageView
+                            android:id="@+id/fromGallery"
                             android:layout_width="32dp"
                             android:layout_height="32dp"
                             android:layout_margin="8dp"
@@ -271,10 +281,11 @@
                     android:id="@+id/ageChipGroup"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginStart="26dp"
                     android:layout_marginEnd="16dp"
                     android:layout_marginBottom="16dp"
-                    app:singleLine="true"
+                    app:singleLine="false"
                     app:singleSelection="true">
 
                     <com.google.android.material.chip.Chip
@@ -282,8 +293,6 @@
                         style="@style/Widget.MaterialComponents.Chip.Choice"
                         android:layout_width="wrap_content"
                         android:layout_height="35dp"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginLeft="10dp"
                         android:text="Balita" />
 
                     <com.google.android.material.chip.Chip
@@ -318,6 +327,7 @@
                     android:textColor="@color/colorPrimary" />
 
                 <me.zhanghai.android.materialratingbar.MaterialRatingBar
+                    android:id="@+id/ratingBar"
                     style="@style/Widget.MaterialRatingBar.RatingBar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

@@ -3,9 +3,11 @@ package com.sawadikap.sawadikap.data.remote
 import com.sawadikap.sawadikap.data.entity.Cloth
 import com.sawadikap.sawadikap.data.entity.Request
 import com.sawadikap.sawadikap.data.entity.Trophy
+import com.sawadikap.sawadikap.domain.model.request.ClothRequest
 import com.sawadikap.sawadikap.domain.model.request.LoginRequest
 import com.sawadikap.sawadikap.domain.model.request.SignUpRequest
 import com.sawadikap.sawadikap.domain.model.request.TrophyRequest
+import com.sawadikap.sawadikap.domain.model.response.ClothResponse
 import com.sawadikap.sawadikap.domain.model.response.LoginResponse
 import com.sawadikap.sawadikap.domain.model.response.SignUpResponse
 import com.sawadikap.sawadikap.domain.model.response.TrophyResponse
@@ -36,4 +38,7 @@ interface SawadikapService {
 
     @GET("request/{id}")
     fun getUseRequest(@Path("id") id: Int): Call<List<Request>>
+
+    @POST("input")
+    fun addToWardrobe(@Body clothRequest: ClothRequest): Call<ClothResponse>
 }
