@@ -5,7 +5,6 @@ import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.*
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
@@ -78,7 +77,6 @@ class WardrobeFragment : Fragment() {
 
             override fun onResponse(call: Call<List<Cloth>>, response: Response<List<Cloth>>) {
                 val data = response.body()
-                Toast.makeText(activity, "Success", Toast.LENGTH_SHORT).show()
                 if (data != null) {
                     Log.d("COBA", data.toString())
                     clothes.addAll(data)

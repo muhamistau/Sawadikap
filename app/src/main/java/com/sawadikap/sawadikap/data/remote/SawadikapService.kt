@@ -12,10 +12,7 @@ import com.sawadikap.sawadikap.domain.model.response.LoginResponse
 import com.sawadikap.sawadikap.domain.model.response.SignUpResponse
 import com.sawadikap.sawadikap.domain.model.response.TrophyResponse
 import retrofit2.Call
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.Path
+import retrofit2.http.*
 
 interface SawadikapService {
     @POST("login")
@@ -41,4 +38,7 @@ interface SawadikapService {
 
     @POST("input")
     fun addToWardrobe(@Body clothRequest: ClothRequest): Call<ClothResponse>
+
+    @DELETE("delete/{id}")
+    fun deleteFromWardrobe(@Path("id") id: Int): Call<ClothResponse>
 }

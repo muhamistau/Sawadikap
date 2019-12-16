@@ -15,6 +15,7 @@ import com.sawadikap.sawadikap.data.remote.SawadikapRemote
 import com.sawadikap.sawadikap.domain.model.request.LoginRequest
 import com.sawadikap.sawadikap.domain.model.response.LoginResponse
 import com.sawadikap.sawadikap.ui.main.MainActivity
+import com.sawadikap.sawadikap.util.Constant
 import kotlinx.android.synthetic.main.fragment_login.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -73,6 +74,15 @@ class LoginFragment : Fragment(), View.OnClickListener {
                         Toast.makeText(activity, "Email atau Kata sandi salah", Toast.LENGTH_SHORT)
                             .show()
                     } else {
+                        val prefs = activity?.getSharedPreferences(
+                            Constant.PREF_NAME,
+                            Constant.PRIVATE_MODE
+                        )
+                        val prefsEditor = prefs?.edit()
+                        prefsEditor?.putString(Constant.PREF_USERNAME, response.body()?.username)
+                        prefsEditor?.putString(Constant.PREF_EMAIL, response.body()?.email)
+                        response.body()?.id?.let { prefsEditor?.putInt(Constant.PREF_ID, it) }
+                        prefsEditor?.apply()
                         startActivity(Intent(activity, MainActivity::class.java))
                         activity?.finish()
                     }
