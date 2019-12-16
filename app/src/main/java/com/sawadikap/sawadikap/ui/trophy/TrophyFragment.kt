@@ -21,7 +21,9 @@ import retrofit2.Response
 class TrophyFragment : Fragment() {
 
     private lateinit var trophies: ArrayList<Trophy>
+    private lateinit var trophiesNotDone: ArrayList<Trophy>
     private lateinit var trophiesAdapter: TrophiesAdapter
+    private lateinit var trophiesNotDoneAdapter: TrophiesAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,12 +36,18 @@ class TrophyFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         trophies = ArrayList()
-        trophiesAdapter = TrophiesAdapter(activity as Context, trophies)
+        trophiesAdapter = TrophiesAdapter(activity as Context, trophies, 1)
 
         trophyDone.adapter = trophiesAdapter
         trophyDone.layoutManager = LinearLayoutManager(activity)
 
+        trophiesNotDone = ArrayList()
+        trophiesNotDoneAdapter = TrophiesAdapter(activity as Context, trophiesNotDone, 0)
+
+        trophyToDo.adapter = trophiesNotDoneAdapter
+        trophyToDo.layoutManager = LinearLayoutManager(activity)
         retrieveTrophy()
+        retrieveTodo()
     }
 
     private fun retrieveTrophy() {
@@ -56,6 +64,25 @@ class TrophyFragment : Fragment() {
                     Log.d("COBA", data.toString())
                     trophies.addAll(data)
                     trophiesAdapter.notifyDataSetChanged()
+                }
+            }
+        })
+    }
+
+    private fun retrieveTodo() {
+        val sawadikapService = SawadikapRemote.create()
+        sawadikapService.getTodo(26).enqueue(object : Callback<List<Trophy>> {
+            override fun onFailure(call: Call<List<Trophy>>, t: Throwable) {
+                Log.d("FAILURE", t.message.toString())
+            }
+
+            override fun onResponse(call: Call<List<Trophy>>, response: Response<List<Trophy>>) {
+                val data = response.body()
+//                Toast.makeText(activity, "Success", Toast.LENGTH_SHORT).show()
+                if (data != null) {
+                    Log.d("COBA", data.toString())
+                    trophiesNotDone.addAll(data)
+                    trophiesNotDoneAdapter.notifyDataSetChanged()
                 }
             }
         })

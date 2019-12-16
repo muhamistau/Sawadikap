@@ -34,6 +34,9 @@ interface SawadikapService {
     @POST("piala")
     fun addToTrophyCabinet(@Body trophyRequest: TrophyRequest): Call<TrophyResponse>
 
+    @GET("todo/{id}")
+    fun getTodo(@Path("id") id: Int): Call<List<Trophy>>
+
     @GET("request/{id}")
     fun getUseRequest(@Path("id") id: Int): Call<List<Request>>
 
