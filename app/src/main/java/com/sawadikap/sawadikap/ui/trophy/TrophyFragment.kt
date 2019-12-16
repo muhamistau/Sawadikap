@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.sawadikap.sawadikap.R
 import com.sawadikap.sawadikap.data.entity.Trophy
 import com.sawadikap.sawadikap.data.remote.SawadikapRemote
+import com.sawadikap.sawadikap.util.Constant
 import com.sawadikap.sawadikap.util.TrophiesAdapter
 import kotlinx.android.synthetic.main.fragment_trophy.*
 import retrofit2.Call
@@ -51,22 +52,29 @@ class TrophyFragment : Fragment() {
     }
 
     private fun retrieveTrophy() {
+        val prefs = activity?.getSharedPreferences(Constant.PREF_NAME, Constant.PRIVATE_MODE)
+        val userId = prefs?.getInt(Constant.PREF_ID, 0)
         val sawadikapService = SawadikapRemote.create()
-        sawadikapService.getUserTrophy(26).enqueue(object : Callback<List<Trophy>> {
-            override fun onFailure(call: Call<List<Trophy>>, t: Throwable) {
-                Log.d("FAILURE", t.message.toString())
-            }
-
-            override fun onResponse(call: Call<List<Trophy>>, response: Response<List<Trophy>>) {
-                val data = response.body()
-//                Toast.makeText(activity, "Success", Toast.LENGTH_SHORT).show()
-                if (data != null) {
-                    Log.d("COBA", data.toString())
-                    trophies.addAll(data)
-                    trophiesAdapter.notifyDataSetChanged()
+        if (userId != null) {
+            sawadikapService.getUserTrophy(userId).enqueue(object : Callback<List<Trophy>> {
+                override fun onFailure(call: Call<List<Trophy>>, t: Throwable) {
+                    Log.d("FAILURE", t.message.toString())
                 }
-            }
-        })
+
+                override fun onResponse(
+                    call: Call<List<Trophy>>,
+                    response: Response<List<Trophy>>
+                ) {
+                    val data = response.body()
+//                    Toast.makeText(activity, "Success", Toast.LENGTH_SHORT).show()
+                    if (data != null) {
+                        Log.d("COBA", data.toString())
+                        trophies.addAll(data)
+                        trophiesAdapter.notifyDataSetChanged()
+                    }
+                }
+            })
+        }
     }
 
     private fun retrieveTodo() {

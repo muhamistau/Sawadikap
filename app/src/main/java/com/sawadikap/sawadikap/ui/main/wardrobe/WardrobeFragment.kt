@@ -12,6 +12,7 @@ import com.sawadikap.sawadikap.R
 import com.sawadikap.sawadikap.data.entity.Cloth
 import com.sawadikap.sawadikap.data.remote.SawadikapRemote
 import com.sawadikap.sawadikap.util.ClothesAdapter
+import com.sawadikap.sawadikap.util.Constant
 import com.sawadikap.sawadikap.util.MarginItemDecoration
 import kotlinx.android.synthetic.main.fragment_wardrobe.*
 import retrofit2.Call
@@ -69,21 +70,24 @@ class WardrobeFragment : Fragment() {
     }
 
     private fun retrieveData() {
+        val prefs = activity?.getSharedPreferences(Constant.PREF_NAME, Constant.PRIVATE_MODE)
+        val userId = prefs?.getInt(Constant.PREF_ID, 0)
         val sawadikapService = SawadikapRemote.create()
-        sawadikapService.getUserClothes(26).enqueue(object : Callback<List<Cloth>> {
-            override fun onFailure(call: Call<List<Cloth>>, t: Throwable) {
-                Log.d("FAILURE", t.message.toString())
-            }
-
-            override fun onResponse(call: Call<List<Cloth>>, response: Response<List<Cloth>>) {
-                val data = response.body()
-                if (data != null) {
-                    Log.d("COBA", data.toString())
-                    clothes.addAll(data)
-                    clothesAdapter.notifyDataSetChanged()
+        if (userId != null) {
+            sawadikapService.getUserClothes(userId).enqueue(object : Callback<List<Cloth>> {
+                override fun onFailure(call: Call<List<Cloth>>, t: Throwable) {
+                    Log.d("FAILURE", t.message.toString())
                 }
-            }
 
-        })
+                override fun onResponse(call: Call<List<Cloth>>, response: Response<List<Cloth>>) {
+                    val data = response.body()
+                    if (data != null) {
+                        Log.d("COBA", data.toString())
+                        clothes.addAll(data)
+                        clothesAdapter.notifyDataSetChanged()
+                    }
+                }
+            })
+        }
     }
 }

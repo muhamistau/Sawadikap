@@ -11,12 +11,15 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.sawadikap.sawadikap.R
 import com.sawadikap.sawadikap.data.remote.SawadikapRemote
+import com.sawadikap.sawadikap.util.Constant
 import kotlinx.android.synthetic.main.fragment_home.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class HomeFragment : Fragment(), View.OnClickListener {
+
+    var sedekah: Int = 0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,23 +37,30 @@ class HomeFragment : Fragment(), View.OnClickListener {
     }
 
     private fun retrieveData() {
+        val prefs = activity?.getSharedPreferences(Constant.PREF_NAME, Constant.PRIVATE_MODE)
+        val userId = prefs?.getInt(Constant.PREF_ID, 0)
         val sawadikapService = SawadikapRemote.create()
-        sawadikapService.getNumberRecord(26).enqueue(object : Callback<Int> {
-            override fun onFailure(call: Call<Int>, t: Throwable) {
-                Log.d("FAILURE", t.message.toString())
-            }
-
-            override fun onResponse(call: Call<Int>, response: Response<Int>) {
-                val data = response.body()
-                Toast.makeText(activity, "Success", Toast.LENGTH_SHORT).show()
-                try {
-                    if (data != null) mainCounter.text = data.toString()
-                } catch (e: Exception) {
-                    Log.d("SEDEKAH_COUNTER", data.toString())
+        if (userId != null) {
+            sawadikapService.getNumberRecord(userId).enqueue(object : Callback<Int> {
+                override fun onFailure(call: Call<Int>, t: Throwable) {
+                    Log.d("FAILURE", t.message.toString())
                 }
-            }
 
-        })
+                override fun onResponse(call: Call<Int>, response: Response<Int>) {
+                    val data = response.body()
+                    Toast.makeText(activity, "Success", Toast.LENGTH_SHORT).show()
+                    try {
+                        if (data != null) {
+                            sedekah = data
+                            mainCounter.text = data.toString()
+                        }
+                    } catch (e: Exception) {
+                        Log.d("SEDEKAH_COUNTER", data.toString())
+                    }
+                }
+
+            })
+        }
     }
 
     override fun onClick(view: View?) {
@@ -61,7 +71,8 @@ class HomeFragment : Fragment(), View.OnClickListener {
             }
 
             R.id.account -> {
-                val action = HomeFragmentDirections.actionHomeFragmentToAccountDetailFragment()
+                val action =
+                    HomeFragmentDirections.actionHomeFragmentToAccountDetailFragment(sedekah)
                 findNavController().navigate(action)
             }
         }

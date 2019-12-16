@@ -13,6 +13,7 @@ import com.sawadikap.sawadikap.data.remote.SawadikapRemote
 import com.sawadikap.sawadikap.domain.model.request.SignUpRequest
 import com.sawadikap.sawadikap.domain.model.response.SignUpResponse
 import com.sawadikap.sawadikap.ui.main.MainActivity
+import com.sawadikap.sawadikap.util.Constant
 import kotlinx.android.synthetic.main.fragment_sign_up.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -36,6 +37,7 @@ class SignUpFragment : Fragment() {
         signUpButton.setOnClickListener {
             if (emailEditText.text.isNullOrEmpty()
                 || fullNameEditText.text.isNullOrEmpty()
+                || phoneEditText.text.isNullOrEmpty()
                 || passwordEditText.text.isNullOrEmpty()
                 || passwordConfirmationEditText.text.isNullOrEmpty()
             ) {
@@ -54,8 +56,10 @@ class SignUpFragment : Fragment() {
         val sawadikapService = SawadikapRemote.create()
         val signUpRequest = SignUpRequest(
             emailEditText.text.toString(),
+            fullNameEditText.text.toString(),
+            phoneEditText.text.toString(),
             passwordEditText.text.toString(),
-            fullNameEditText.text.toString()
+            emailEditText.text.toString()
         )
 
         sawadikapService.signup(signUpRequest).enqueue(object : Callback<SignUpResponse> {
@@ -70,6 +74,15 @@ class SignUpFragment : Fragment() {
                 if (response.body().toString() == "null") {
                     Toast.makeText(activity, "Email sudah terdaftar", Toast.LENGTH_SHORT).show()
                 } else {
+                    val prefs = activity?.getSharedPreferences(
+                        Constant.PREF_NAME,
+                        Constant.PRIVATE_MODE
+                    )
+                    val prefsEditor = prefs?.edit()
+                    prefsEditor?.putString(Constant.PREF_USERNAME, response.body()?.email)
+                    prefsEditor?.putString(Constant.PREF_EMAIL, response.body()?.email)
+                    response.body()?.id?.let { prefsEditor?.putInt(Constant.PREF_ID, it) }
+                    prefsEditor?.apply()
                     startActivity(Intent(activity, MainActivity::class.java))
                     activity?.finish()
                 }

@@ -39,8 +39,8 @@ class LoginFragment : Fragment(), View.OnClickListener {
     override fun onClick(view: View?) {
         when (view?.id) {
             R.id.loginButton -> {
-//                checkLogin()
-                nextPage()
+                checkLogin()
+//                nextPage()
             }
 
             R.id.signupButton -> {
