@@ -7,19 +7,19 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class Cloth(
     @SerializedName("id_pakaian")
-    val id: Int,
+    var id: Int? = null,
     @SerializedName("id_user")
-    val idUser: Int,
+    var idUser: Int? = null,
     @SerializedName("jenis_ukuran")
-    val size: String,
+    var size: String? = null,
     @SerializedName("jenis_gender")
-    val gender: String,
+    var gender: String? = null,
     @SerializedName("jenis_usia")
-    val age: String,
+    var age: String? = null,
     @SerializedName("jenis_baju")
-    val type: String,
+    var type: String? = null,
     @SerializedName("foto")
-    val photo: String,
+    var photo: String? = null,
     @SerializedName("status")
-    val status: String
+    var status: String? = null
 ) : Parcelable

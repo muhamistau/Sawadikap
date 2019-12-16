@@ -63,22 +63,20 @@ class AddClothFragment : Fragment(), View.OnClickListener {
     override fun onClick(view: View?) {
         when (view?.id) {
             R.id.addToWardrobeButton -> {
-                Log.d("SELECTED_NAME", nameEditText.text.toString())
-                Log.d(
-                    "SELECTED_GENDER",
-                    getSelectedText(genderChipGroup, genderChipGroup.checkedChipId)
-                )
-                Log.d("SELECTED_SIZE", getSelectedText(sizeChipGroup, sizeChipGroup.checkedChipId))
-                Log.d("SELECTED_AGE", getSelectedText(ageChipGroup, ageChipGroup.checkedChipId))
-                Log.d("SELECTED_RATING", ratingBar.rating.toString())
-                addToWardrobe(
-                    26,
-                    getSelectedText(ageChipGroup, ageChipGroup.checkedChipId),
-                    getSelectedText(sizeChipGroup, sizeChipGroup.checkedChipId),
-                    getSelectedText(genderChipGroup, genderChipGroup.checkedChipId),
-                    nameEditText.text.toString(),
-                    ratingBar.rating.toString()
-                )
+                val prefs =
+                    activity?.getSharedPreferences(Constant.PREF_NAME, Constant.PRIVATE_MODE)
+                val userId = prefs?.getInt(Constant.PREF_ID, 0)
+
+                if (userId != null) {
+                    addToWardrobe(
+                        userId,
+                        getSelectedText(ageChipGroup, ageChipGroup.checkedChipId),
+                        getSelectedText(sizeChipGroup, sizeChipGroup.checkedChipId),
+                        getSelectedText(genderChipGroup, genderChipGroup.checkedChipId),
+                        nameEditText.text.toString(),
+                        ratingBar.rating.toString()
+                    )
+                }
             }
             R.id.fromCamera -> {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {

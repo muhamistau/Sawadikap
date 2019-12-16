@@ -78,21 +78,28 @@ class TrophyFragment : Fragment() {
     }
 
     private fun retrieveTodo() {
+        val prefs = activity?.getSharedPreferences(Constant.PREF_NAME, Constant.PRIVATE_MODE)
+        val userId = prefs?.getInt(Constant.PREF_ID, 0)
         val sawadikapService = SawadikapRemote.create()
-        sawadikapService.getTodo(26).enqueue(object : Callback<List<Trophy>> {
-            override fun onFailure(call: Call<List<Trophy>>, t: Throwable) {
-                Log.d("FAILURE", t.message.toString())
-            }
-
-            override fun onResponse(call: Call<List<Trophy>>, response: Response<List<Trophy>>) {
-                val data = response.body()
-//                Toast.makeText(activity, "Success", Toast.LENGTH_SHORT).show()
-                if (data != null) {
-                    Log.d("COBA", data.toString())
-                    trophiesNotDone.addAll(data)
-                    trophiesNotDoneAdapter.notifyDataSetChanged()
+        if (userId != null) {
+            sawadikapService.getTodo(userId).enqueue(object : Callback<List<Trophy>> {
+                override fun onFailure(call: Call<List<Trophy>>, t: Throwable) {
+                    Log.d("FAILURE", t.message.toString())
                 }
-            }
-        })
+
+                override fun onResponse(
+                    call: Call<List<Trophy>>,
+                    response: Response<List<Trophy>>
+                ) {
+                    val data = response.body()
+                    //                Toast.makeText(activity, "Success", Toast.LENGTH_SHORT).show()
+                    if (data != null) {
+                        Log.d("COBA", data.toString())
+                        trophiesNotDone.addAll(data)
+                        trophiesNotDoneAdapter.notifyDataSetChanged()
+                    }
+                }
+            })
+        }
     }
 }

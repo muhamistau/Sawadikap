@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
+import com.carteasy.v1.lib.Carteasy
 import com.sawadikap.sawadikap.R
 import com.sawadikap.sawadikap.data.entity.Cloth
 import com.sawadikap.sawadikap.data.remote.SawadikapRemote
@@ -19,9 +20,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-/**
- * A simple [Fragment] subclass.
- */
+
 class WardrobeDetailFragment : Fragment(), View.OnClickListener {
 
     lateinit var cloth: Cloth
@@ -55,39 +54,58 @@ class WardrobeDetailFragment : Fragment(), View.OnClickListener {
 
     override fun onClick(view: View?) {
         when (view?.id) {
-            R.id.addToBoxButton -> Toast.makeText(activity, "added", Toast.LENGTH_SHORT).show()
+            R.id.addToBoxButton -> {
+                val cs = Carteasy()
+                cs.add(cloth.id.toString(), "id", cloth.id)
+                cs.add(cloth.id.toString(), "photo", cloth.photo)
+                cs.add(cloth.id.toString(), "name", cloth.type)
+                cs.add(cloth.id.toString(), "size", cloth.size)
+                cs.add(cloth.id.toString(), "gender", cloth.gender)
+                cs.add(cloth.id.toString(), "age", cloth.age)
+                cs.add(cloth.id.toString(), "status", cloth.status)
+                cs.commit(activity?.applicationContext)
+                cs.persistData(activity?.applicationContext, true)
+                Toast.makeText(
+                    activity,
+                    "Berhasil ditambahkan ke kotak sedekah",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+
             R.id.deleteButton -> {
                 val sawadikapService = SawadikapRemote.create()
 
-                sawadikapService.deleteFromWardrobe(cloth.id)
-                    .enqueue(object : Callback<ClothResponse> {
-                        override fun onFailure(call: Call<ClothResponse>, t: Throwable) {
-                            activity?.runOnUiThread {
-                                Toast.makeText(
-                                    activity,
-                                    "Gagal menghapus pakaian, cek koneksi",
-                                    Toast.LENGTH_SHORT
-                                ).show()
-                            }
-                            Log.d("FAILURE", t.message.toString())
-                        }
-
-                        override fun onResponse(
-                            call: Call<ClothResponse>,
-                            response: Response<ClothResponse>
-                        ) {
-                            if (response.isSuccessful) {
+                cloth.id?.let {
+                    sawadikapService.deleteFromWardrobe(it)
+                        .enqueue(object : Callback<ClothResponse> {
+                            override fun onFailure(call: Call<ClothResponse>, t: Throwable) {
                                 activity?.runOnUiThread {
                                     Toast.makeText(
                                         activity,
-                                        "Berhasil menghapus pakaian",
+                                        "Gagal menghapus pakaian, cek koneksi",
                                         Toast.LENGTH_SHORT
                                     ).show()
                                 }
-                                findNavController().navigateUp()
+                                Log.d("FAILURE", t.message.toString())
                             }
-                        }
-                    })
+
+                            override fun onResponse(
+                                call: Call<ClothResponse>,
+                                response: Response<ClothResponse>
+                            ) {
+                                if (response.isSuccessful) {
+                                    activity?.runOnUiThread {
+                                        Toast.makeText(
+                                            activity,
+                                            "Berhasil menghapus pakaian",
+                                            Toast.LENGTH_SHORT
+                                        ).show()
+                                    }
+                                    findNavController().navigateUp()
+                                }
+                            }
+                        })
+                }
             }
         }
     }

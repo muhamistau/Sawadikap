@@ -13,7 +13,7 @@
         android:orientation="vertical">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/box"
+            android:id="@+id/boxRecycler"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:itemCount="4"
@@ -32,7 +32,6 @@
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
             android:backgroundTint="@color/colorPrimary"
-            android:enabled="false"
             android:text="Sedekahkan Pakaian"
             app:cornerRadius="8dp" />
 
