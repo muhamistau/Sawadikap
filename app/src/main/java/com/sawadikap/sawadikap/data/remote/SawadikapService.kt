@@ -3,6 +3,7 @@ package com.sawadikap.sawadikap.data.remote
 import com.sawadikap.sawadikap.data.entity.Cloth
 import com.sawadikap.sawadikap.data.entity.Request
 import com.sawadikap.sawadikap.data.entity.Trophy
+import com.sawadikap.sawadikap.data.entity.User
 import com.sawadikap.sawadikap.domain.model.request.ClothRequest
 import com.sawadikap.sawadikap.domain.model.request.LoginRequest
 import com.sawadikap.sawadikap.domain.model.request.SignUpRequest
@@ -41,4 +42,10 @@ interface SawadikapService {
 
     @DELETE("delete/{id}")
     fun deleteFromWardrobe(@Path("id") id: Int): Call<ClothResponse>
+
+    @POST("update")
+    fun updateUserCreds(@Body user: User): Call<Int>
+
+    @GET("getUser/{id}")
+    fun getUserCred(@Path("id") id: Int): Call<List<User>>
 }

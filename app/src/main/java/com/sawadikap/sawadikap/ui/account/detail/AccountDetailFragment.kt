@@ -1,15 +1,21 @@
 package com.sawadikap.sawadikap.ui.account.detail
 
 
+import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.sawadikap.sawadikap.R
+import com.sawadikap.sawadikap.ui.authentication.AuthActivity
+import com.sawadikap.sawadikap.util.Constant
 import kotlinx.android.synthetic.main.fragment_account_detail.*
 
 
 class AccountDetailFragment : Fragment(), View.OnClickListener {
+
+    private var prefs: SharedPreferences? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -22,6 +28,11 @@ class AccountDetailFragment : Fragment(), View.OnClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        prefs =
+            activity?.getSharedPreferences(Constant.PREF_NAME, Constant.PRIVATE_MODE)
+
+        nameText.text = prefs?.getString(Constant.PREF_USERNAME, "")
+        emailText.text = prefs?.getString(Constant.PREF_EMAIL, "")
 
         logoutButton.setOnClickListener(this)
     }
@@ -29,7 +40,9 @@ class AccountDetailFragment : Fragment(), View.OnClickListener {
     override fun onClick(view: View?) {
         when (view?.id) {
             R.id.logoutButton -> {
-                // TODO: handle logout system
+                prefs?.edit()?.clear()?.apply()
+                activity?.finishAffinity()
+                startActivity(Intent(activity, AuthActivity::class.java))
             }
         }
     }
