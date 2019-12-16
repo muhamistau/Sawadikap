@@ -7,7 +7,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.sawadikap.sawadikap.R
@@ -52,7 +51,7 @@ class TrophyFragment : Fragment() {
 
             override fun onResponse(call: Call<List<Trophy>>, response: Response<List<Trophy>>) {
                 val data = response.body()
-                Toast.makeText(activity, "Success", Toast.LENGTH_SHORT).show()
+//                Toast.makeText(activity, "Success", Toast.LENGTH_SHORT).show()
                 if (data != null) {
                     Log.d("COBA", data.toString())
                     trophies.addAll(data)

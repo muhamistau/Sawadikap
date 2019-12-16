@@ -20,7 +20,7 @@
             android:textSize="24dp" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/historyDone"
+            android:id="@+id/historyPending"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:overScrollMode="never"
@@ -37,7 +37,7 @@
             android:textSize="24dp" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/historyToDo"
+            android:id="@+id/historyDone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:overScrollMode="never"

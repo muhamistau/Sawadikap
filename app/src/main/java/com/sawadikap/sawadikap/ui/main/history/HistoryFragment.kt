@@ -22,6 +22,7 @@ import retrofit2.Response
 class HistoryFragment : Fragment() {
 
     private lateinit var requests: ArrayList<Request>
+    private lateinit var doneRequest: ArrayList<Request>
     private lateinit var requestsAdapter: RequestsAdapter
 
     override fun onCreateView(
@@ -36,6 +37,7 @@ class HistoryFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         requests = ArrayList()
+        doneRequest = ArrayList()
         requestsAdapter = RequestsAdapter(activity as Context, requests) {
             Toast.makeText(activity, "clicked", Toast.LENGTH_SHORT).show()
         }
@@ -57,6 +59,13 @@ class HistoryFragment : Fragment() {
                 val data = response.body()
                 Toast.makeText(activity, "Success", Toast.LENGTH_SHORT).show()
                 if (data != null) {
+
+//                    for (request in requests) {
+//                        if (request.status.contains("proses", true)) {
+//                        } else {
+//                            doneRequest.add(request)
+//                    }
+
                     Log.d("COBA", data.toString())
                     requests.addAll(data)
                     requestsAdapter.notifyDataSetChanged()

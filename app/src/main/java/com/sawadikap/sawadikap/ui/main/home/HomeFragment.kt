@@ -43,7 +43,11 @@ class HomeFragment : Fragment(), View.OnClickListener {
             override fun onResponse(call: Call<Int>, response: Response<Int>) {
                 val data = response.body()
                 Toast.makeText(activity, "Success", Toast.LENGTH_SHORT).show()
-                if (data != null) mainCounter.text = data.toString()
+                try {
+                    if (data != null) mainCounter.text = data.toString()
+                } catch (e: Exception) {
+                    Log.d("SEDEKAH_COUNTER", data.toString())
+                }
             }
 
         })

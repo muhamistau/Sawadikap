@@ -11,4 +11,6 @@
     <color name="grey">#DBDBDB</color>
     <color name="darkGrey">#A2A2A2</color>
     <color name="textCategory">#9C9C9C</color>
+
+    <color name="ic_launcher_background">#00BFA5</color>
 </resources>
